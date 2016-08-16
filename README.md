@@ -29,7 +29,9 @@ This package makes it easy to send notifications using the [Discord bot API](htt
 
 You can install the package via composer:
 
-`composer require laravel-notification-channels/discord`
+```bash
+composer require laravel-notification-channels/discord
+```
 
 Next, you must load the service provider:
 
@@ -38,7 +40,7 @@ Next, you must load the service provider:
 'providers' => [
     // ...
     NotificationChannels\Discord\DiscordServiceProvider::class,
-]
+],
 ```
 
 ### Setting up your Discord bot
@@ -47,18 +49,17 @@ Next, you must load the service provider:
 2. Click the `Create a Bot User` button on your Discord application.
 3. Paste your bot's API token, found under `App Bot User`, in your `services.php` config file:
 
-    ```php
-    // config/services.php
-    'discord' => [
-        'token' => 'YOUR_API_TOKEN',
-    ],
-    ```
+```php
+// config/services.php
+'discord' => [
+    'token' => 'YOUR_API_TOKEN',
+],```
 
 4. Add the bot to your server and identify it by running the artisan command:
 
-    ```shell
-    php artisan discord:setup
-    ```
+``shell
+php artisan discord:setup
+```
 
 ## Usage
 
@@ -140,7 +141,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## Testing
 
-``` bash
+```bash
 $ composer test
 ```
 
