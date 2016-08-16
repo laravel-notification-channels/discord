@@ -2,7 +2,6 @@
 
 namespace NotificationChannels\Discord;
 
-
 class DiscordMessage
 {
     /**

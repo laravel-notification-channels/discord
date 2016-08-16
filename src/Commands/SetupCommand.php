@@ -62,9 +62,9 @@ class SetupCommand extends Command
                     '$browser' => 'laravel-notification-channels-discord',
                     '$device' => 'laravel-notification-channels-discord',
                     '$referrer' => '',
-                    '$referring_domain' => ''
-                ]
-            ]
+                    '$referring_domain' => '',
+                ],
+            ],
         ]));
 
         $response = $client->receive();

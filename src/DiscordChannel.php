@@ -3,9 +3,6 @@
 namespace NotificationChannels\Discord;
 
 use Illuminate\Notifications\Notification;
-use NotificationChannels\Discord\Events\MessageWasSent;
-use NotificationChannels\Discord\Events\SendingMessage;
-use NotificationChannels\Discord\Exceptions\CouldNotSendNotification;
 
 class DiscordChannel
 {
