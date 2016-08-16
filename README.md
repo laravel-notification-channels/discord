@@ -125,8 +125,7 @@ class GameChallengeNotification extends Notification
 
     public function toDiscord($notifiable)
     {
-        return (new DiscordMessage)
-            ->body("You have been challenged to a game of *{$this->game->name}* by **{$this->channelger->name}**!");
+        return DiscordMessage::create("You have been challenged to a game of *{$this->game->name}* by **{$this->channelger->name}**!");
     }
 }
 ```

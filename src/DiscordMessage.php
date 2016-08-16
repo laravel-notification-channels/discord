@@ -2,7 +2,6 @@
 
 namespace NotificationChannels\Discord;
 
-use Illuminate\Support\Arr;
 
 class DiscordMessage
 {
@@ -12,6 +11,16 @@ class DiscordMessage
      * @var string
      */
     public $body;
+
+    /**
+     * @param  string $body
+     *
+     * @return static
+     */
+    public static function create($body = '')
+    {
+        return new static($body);
+    }
 
     /**
      * @param  string  $body

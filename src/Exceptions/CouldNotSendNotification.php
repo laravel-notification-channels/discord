@@ -33,11 +33,11 @@ class CouldNotSendNotification extends Exception
     }
 
     /**
-     * @param  \Exception  $e
+     * @param  \Exception  $exception
      * @return static
      */
-    public static function serviceCommunicationError(Exception $e)
+    public static function serviceCommunicationError(Exception $exception)
     {
-        return new static("Communication with Discord failed: {$e->getCode()}: {$e->getMessage()}");
+        return new static("Communication with Discord failed: {$exception->getCode()}: {$exception->getMessage()}");
     }
 }

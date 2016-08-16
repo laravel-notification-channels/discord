@@ -9,9 +9,7 @@ use NotificationChannels\Discord\Exceptions\CouldNotSendNotification;
 
 class DiscordChannel
 {
-    /**
-     * @var \NotificationChannels\Discord\Discord;
-     */
+    /** @var \NotificationChannels\Discord\Discord */
     protected $discord;
 
     /**
@@ -27,6 +25,7 @@ class DiscordChannel
      *
      * @param  mixed  $notifiable
      * @param  \Illuminate\Notifications\Notification  $notification
+     *
      * @throws \NotificationChannels\Discord\Exceptions\CouldNotSendNotification
      */
     public function send($notifiable, Notification $notification)

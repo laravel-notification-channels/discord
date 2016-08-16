@@ -41,7 +41,7 @@ class SetupCommand extends Command
 
             $gateway = Arr::get(json_decode($response->getBody(), true), 'url', $gateway);
         } catch (\Excetion $e) {
-            $this->warn("Could not get a WebSocket gateway address, defaulting to '$gateway'.");
+            $this->warn("Could not get a WebSocket gateway address, defaulting to {$gateway}.");
         }
 
         $this->warn("Connecting to '$gateway'...");
