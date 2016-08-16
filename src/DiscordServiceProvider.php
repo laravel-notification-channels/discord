@@ -2,7 +2,6 @@
 
 namespace NotificationChannels\Discord;
 
-use GuzzleHttp\Client as HttpClient;
 use Illuminate\Support\ServiceProvider;
 use NotificationChannels\Discord\Commands\SetupCommand;
 
