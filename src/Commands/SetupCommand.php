@@ -28,7 +28,7 @@ class SetupCommand extends Command
             $this->warn('Add the bot to your server by visiting this link: https://discordapp.com/oauth2/authorize?&client_id='.$clientId.'&scope=bot&permissions=0');
         }
 
-        $this->warn("Attempting to identify the bot with Discord's WebScoket gateway...");
+        $this->warn("Attempting to identify the bot with Discord's websocket gateway...");
 
         $gateway = 'wss://gateway.discord.gg';
 
@@ -41,14 +41,14 @@ class SetupCommand extends Command
 
             $gateway = Arr::get(json_decode($response->getBody(), true), 'url', $gateway);
         } catch (\Excetion $e) {
-            $this->warn("Could not get a WebSocket gateway address, defaulting to {$gateway}.");
+            $this->warn("Could not get a websocket gateway address, defaulting to {$gateway}.");
         }
 
         $this->warn("Connecting to '$gateway'...");
 
         $client = new Client($gateway);
 
-        // Discord requires all bots to connect via a WebSocket connection and
+        // Discord requires all bots to connect via a websocket connection and
         // identify at least once before any HTTP API requests are allowed.
         // https://discordapp.com/developers/docs/topics/gateway#gateway-identify
         $client->send(json_encode([
