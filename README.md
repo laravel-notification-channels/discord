@@ -110,7 +110,7 @@ You may now tell Laravel to send notifications to Discord channels in the `via` 
 ```php
 class GameChallengeNotification extends Notification
 {
-    public $channelger;
+    public $challenger;
 
     public $game;
 
@@ -126,7 +126,7 @@ class GameChallengeNotification extends Notification
 
     public function toDiscord($notifiable)
     {
-        return DiscordMessage::create("You have been challenged to a game of *{$this->game->name}* by **{$this->channelger->name}**!");
+        return DiscordMessage::create("You have been challenged to a game of *{$this->game->name}* by **{$this->challenger->name}**!");
     }
 }
 ```
