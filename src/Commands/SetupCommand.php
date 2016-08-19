@@ -2,6 +2,7 @@
 
 namespace NotificationChannels\Discord\Commands;
 
+use Exception;
 use WebSocket\Client;
 use Illuminate\Support\Arr;
 use Illuminate\Console\Command;
@@ -40,7 +41,7 @@ class SetupCommand extends Command
             ]);
 
             $gateway = Arr::get(json_decode($response->getBody(), true), 'url', $gateway);
-        } catch (\Excetion $e) {
+        } catch (Exception $e) {
             $this->warn("Could not get a websocket gateway address, defaulting to {$gateway}.");
         }
 
