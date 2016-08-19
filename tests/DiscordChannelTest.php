@@ -8,7 +8,6 @@ use GuzzleHttp\Client as HttpClient;
 use NotificationChannels\Discord\Discord;
 use NotificationChannels\Discord\DiscordChannel;
 use NotificationChannels\Discord\DiscordMessage;
-use NotificationChannels\Discord\Exceptions\CouldNotSendNotification;
 
 class DiscordChannelTest extends \PHPUnit_Framework_TestCase
 {
@@ -33,40 +32,14 @@ class DiscordChannelTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_throws_an_exception_when_it_could_not_send_the_notification()
+    public function it_does_not_send_a_notification_if_the_notifiable_does_not_provide_a_discord_channel()
     {
-        $this->setExpectedException(CouldNotSendNotification::class);
-
-        $http = Mockery::mock(HttpClient::class);
-        $http->shouldReceive('request')
-            ->once()
-            ->andThrow(\Exception::class);
-
-        $discord = new Discord($http, 'super-secret');
+        $discord = Mockery::spy(new Discord(new HttpClient, 'super-secret'));
         $channel = new DiscordChannel($discord);
 
-        $channel->send(new TestNotifiable, new TestNotification);
-    }
+        $channel->send(new TestNotifiableWithoutRoute, new TestNotification);
 
-    /** @test */
-    public function it_throws_an_exception_when_an_api_error_is_returned()
-    {
-        $this->setExpectedException(CouldNotSendNotification::class);
-
-        $response = Mockery::mock(Response::class);
-        $response->shouldReceive('getBody')
-            ->once()
-            ->andReturn('{"code": 10003, "message": "Unknown Channel"}');
-
-        $http = Mockery::mock(HttpClient::class);
-        $http->shouldReceive('post')
-            ->once()
-            ->andReturn($response);
-
-        $discord = new Discord($http, 'super-secret');
-        $channel = new DiscordChannel($discord);
-
-        $channel->send(new TestNotifiable, new TestNotification);
+        $discord->shouldNotHaveReceived('send');
     }
 }
 
@@ -78,6 +51,11 @@ class TestNotifiable
     {
         return '0123456789';
     }
+}
+
+class TestNotifiableWithoutRoute
+{
+    use \Illuminate\Notifications\Notifiable;
 }
 
 class TestNotification extends \Illuminate\Notifications\Notification
