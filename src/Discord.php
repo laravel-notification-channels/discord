@@ -71,7 +71,11 @@ class Discord
                 'json' => $data,
             ]);
         } catch (RequestException $exception) {
-            throw CouldNotSendNotification::serviceRespondedWithAnHttpError($exception->getResponse());
+            if ($response = $exception->getResponse()) {
+                throw CouldNotSendNotification::serviceRespondedWithAnHttpError($exception->getResponse());
+            }
+
+            throw CouldNotSendNotification::serviceCommunicationError($exception);
         } catch (Exception $exception) {
             throw CouldNotSendNotification::serviceCommunicationError($exception);
         }
