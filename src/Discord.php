@@ -10,13 +10,19 @@ use NotificationChannels\Discord\Exceptions\CouldNotSendNotification;
 
 class Discord
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $baseUrl = 'https://discordapp.com/api';
 
-    /** @var \GuzzleHttp\Client */
+    /**
+     * @var \GuzzleHttp\Client
+     */
     protected $httpClient;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $token;
 
     /**
@@ -32,8 +38,7 @@ class Discord
     /**
      * @param  string  $channel
      * @param  array  $data
-     *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return array
      */
     public function send($channel, array $data)
     {
@@ -42,7 +47,6 @@ class Discord
 
     /**
      * @param  mixed  $user
-     *
      * @return string
      */
     public function getPrivateChannel($user)
@@ -51,10 +55,9 @@ class Discord
     }
 
     /**
-     * @param $verb
-     * @param  string $endpoint
-     * @param  array $data
-     *
+     * @param  string  $verb
+     * @param  string  $endpoint
+     * @param  array  $data
      * @return array
      *
      * @throws \NotificationChannels\Discord\Exceptions\CouldNotSendNotification

@@ -12,8 +12,7 @@ class DiscordMessage
     public $body;
 
     /**
-     * @param  string $body
-     *
+     * @param  string  $body
      * @return static
      */
     public static function create($body = '')

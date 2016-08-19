@@ -6,7 +6,9 @@ use Illuminate\Notifications\Notification;
 
 class DiscordChannel
 {
-    /** @var \NotificationChannels\Discord\Discord */
+    /**
+     * @var \NotificationChannels\Discord\Discord
+     */
     protected $discord;
 
     /**
@@ -22,6 +24,7 @@ class DiscordChannel
      *
      * @param  mixed  $notifiable
      * @param  \Illuminate\Notifications\Notification  $notification
+     * @return void
      *
      * @throws \NotificationChannels\Discord\Exceptions\CouldNotSendNotification
      */
