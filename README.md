@@ -157,7 +157,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [Cody Scott](https://github.com/cs475x)
+- [Cody Scott](https://github.com/codyphobe)
 - [All Contributors](../../contributors)
 
 ## License
