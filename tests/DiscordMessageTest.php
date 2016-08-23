@@ -15,6 +15,14 @@ class DiscordMessageTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
+    public function it_provides_a_create_method()
+    {
+        $message = DiscordMessage::create('a message');
+
+        $this->assertEquals('a message', $message->body);
+    }
+
+    /** @test */
     public function it_can_set_the_body()
     {
         $message = new DiscordMessage;
