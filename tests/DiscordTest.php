@@ -3,6 +3,7 @@
 namespace NotificationChannels\Discord\Tests;
 
 use Mockery;
+use Exception;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Client as HttpClient;
@@ -67,6 +68,27 @@ class DiscordTest extends \PHPUnit_Framework_TestCase
                 'json' => ['content' => 'a message'],
             ])
             ->andThrow(new RequestException('Some error', Mockery::mock(Request::class)));
+
+        $discord = new Discord($http, 'super-secret');
+
+        $discord->send('some-channel-id', ['content' => 'a message']);
+    }
+
+    /** @test */
+    public function it_wraps_and_rethrows_a_caught_exception()
+    {
+        $this->setExpectedException(CouldNotSendNotification::class, 'Communication with Discord failed');
+
+        $http = Mockery::mock(HttpClient::class);
+        $http->shouldReceive('request')
+            ->once()
+            ->with('POST', 'https://discordapp.com/api/channels/some-channel-id/messages', [
+                'headers' => [
+                    'Authorization' => 'Bot super-secret',
+                ],
+                'json' => ['content' => 'a message'],
+            ])
+            ->andThrow(new Exception('Some unexpected error'));
 
         $discord = new Discord($http, 'super-secret');
 
