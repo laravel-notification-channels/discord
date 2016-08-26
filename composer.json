@@ -22,8 +22,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "illuminate/notifications": "5.3.*",
         "illuminate/support": "5.1.*|5.2.*|5.3.*",
-        "illuminate/console": "5.1.*|5.2.*|5.3.*",
         "illuminate/queue": "5.1.*|5.2.*|5.3.*",
+        "illuminate/console": "5.1.*|5.2.*|5.3.*",
         "textalk/websocket": "1.0.*"
     },
     "require-dev": {
