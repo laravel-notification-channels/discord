@@ -71,7 +71,7 @@ class Guild extends Eloquent
 {
     use Notifiable;
 
-    public function routeNotificationForPushover()
+    public function routeNotificationForDiscord()
     {
         return $this->discord_channel;
     }
