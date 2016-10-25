@@ -109,6 +109,10 @@ class Guild extends Eloquent
 You may now tell Laravel to send notifications to Discord channels in the `via` method:
 
 ```php
+// ...
+use NotificationChannels\Discord\DiscordMessage;
+use NotificationChannels\Discord\DiscordChannel;
+
 class GameChallengeNotification extends Notification
 {
     public $challenger;
