@@ -3,9 +3,9 @@
 namespace NotificationChannels\Discord\Tests;
 
 use Mockery;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Config\Repository as Config;
 use NotificationChannels\Discord\Discord;
+use Illuminate\Config\Repository as Config;
+use Illuminate\Contracts\Foundation\Application;
 use NotificationChannels\Discord\Commands\SetupCommand;
 use NotificationChannels\Discord\DiscordServiceProvider;
 
