@@ -11,15 +11,15 @@ class DiscordServiceProvider extends ServiceProvider
     {
         $this->app->bind('command.discord:setup', SetupCommand::class);
 
-        $this->commands([
-            'command.discord:setup',
-        ]);
+        if ($this->app->runningInConsole()) {
+            $this->commands('command.discord:setup');
+        }
     }
 
     public function boot()
     {
         $this->app->when(Discord::class)
             ->needs('$token')
-            ->give($this->app['config']->get('services.discord.token'));
+            ->give($this->app->make('config')->get('services.discord.token'));
     }
 }
