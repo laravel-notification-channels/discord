@@ -20,7 +20,6 @@ class DiscordServiceProviderTest extends \PHPUnit_Framework_TestCase
         $config->shouldReceive('get')->with('services.discord.token')->once()->andReturn('a-secret-key');
 
         $app->shouldReceive('bind')->with('command.discord:setup', SetupCommand::class)->once();
-        $app->shouldReceive('runningInConsole')->once()->andReturn(true);
 
         $app->shouldReceive('make')->with('config')->once()->andReturn($config);
         $app->shouldReceive('when')->with(Discord::class)->once()->andReturn($app);

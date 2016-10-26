@@ -10,10 +10,7 @@ class DiscordServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('command.discord:setup', SetupCommand::class);
-
-        if ($this->app->runningInConsole()) {
-            $this->commands('command.discord:setup');
-        }
+        $this->commands('command.discord:setup');
     }
 
     public function boot()
