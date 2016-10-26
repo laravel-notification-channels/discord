@@ -12,7 +12,7 @@ class DiscordChannel
     protected $discord;
 
     /**
-     * @param  \NotificationChannels\Discord\Discord  $discord
+     * @param \NotificationChannels\Discord\Discord $discord
      */
     public function __construct(Discord $discord)
     {
@@ -22,8 +22,8 @@ class DiscordChannel
     /**
      * Send the given notification.
      *
-     * @param  mixed  $notifiable
-     * @param  \Illuminate\Notifications\Notification  $notification
+     * @param mixed $notifiable
+     * @param \Illuminate\Notifications\Notification $notification
      * @return void
      *
      * @throws \NotificationChannels\Discord\Exceptions\CouldNotSendNotification

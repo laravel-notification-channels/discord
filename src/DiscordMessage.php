@@ -12,7 +12,7 @@ class DiscordMessage
     public $body;
 
     /**
-     * @param  string  $body
+     * @param string $body
      * @return static
      */
     public static function create($body = '')
@@ -21,7 +21,7 @@ class DiscordMessage
     }
 
     /**
-     * @param  string  $body
+     * @param string $body
      */
     public function __construct($body = '')
     {
@@ -31,7 +31,7 @@ class DiscordMessage
     /**
      * Set the text content of the message.
      *
-     * @param  string  $body
+     * @param string $body
      * @return $this
      */
     public function body($body)

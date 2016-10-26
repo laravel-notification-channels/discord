@@ -110,8 +110,8 @@ You may now tell Laravel to send notifications to Discord channels in the `via` 
 
 ```php
 // ...
-use NotificationChannels\Discord\DiscordMessage;
 use NotificationChannels\Discord\DiscordChannel;
+use NotificationChannels\Discord\DiscordMessage;
 
 class GameChallengeNotification extends Notification
 {

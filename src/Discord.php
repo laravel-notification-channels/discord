@@ -26,8 +26,8 @@ class Discord
     protected $token;
 
     /**
-     * @param  \GuzzleHttp\Client  $http
-     * @param  string  $token
+     * @param \GuzzleHttp\Client $http
+     * @param string $token
      */
     public function __construct(HttpClient $http, $token)
     {
@@ -36,8 +36,8 @@ class Discord
     }
 
     /**
-     * @param  string  $channel
-     * @param  array  $data
+     * @param string $channel
+     * @param array $data
      * @return array
      */
     public function send($channel, array $data)
@@ -46,7 +46,7 @@ class Discord
     }
 
     /**
-     * @param  mixed  $user
+     * @param mixed $user
      * @return string
      */
     public function getPrivateChannel($user)
@@ -55,9 +55,9 @@ class Discord
     }
 
     /**
-     * @param  string  $verb
-     * @param  string  $endpoint
-     * @param  array  $data
+     * @param string $verb
+     * @param string $endpoint
+     * @param array $data
      * @return array
      *
      * @throws \NotificationChannels\Discord\Exceptions\CouldNotSendNotification

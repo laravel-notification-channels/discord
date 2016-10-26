@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface;
 class CouldNotSendNotification extends Exception
 {
     /**
-     * @param  \Psr\Http\Message\ResponseInterface  $response
+     * @param \Psr\Http\Message\ResponseInterface $response
      * @return static
      */
     public static function serviceRespondedWithAnHttpError(ResponseInterface $response)
@@ -24,7 +24,7 @@ class CouldNotSendNotification extends Exception
     }
 
     /**
-     * @param  array  $response
+     * @param array $response
      * @return static
      */
     public static function serviceRespondedWithAnApiError(array $response)
@@ -33,7 +33,7 @@ class CouldNotSendNotification extends Exception
     }
 
     /**
-     * @param  \Exception  $exception
+     * @param \Exception $exception
      * @return static
      */
     public static function serviceCommunicationError(Exception $exception)
