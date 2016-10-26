@@ -46,7 +46,7 @@ class DiscordTest extends \PHPUnit_Framework_TestCase
                 ],
                 'json' => ['content' => 'a message'],
             ])
-            ->andThrow(RequestException::create(Mockery::spy(Request::class), new Response(404, [], json_encode(['message' => 'Not found']))));
+            ->andThrow(new RequestException('Not found', Mockery::mock(Request::class), new Response(404, [], json_encode(['message' => 'Not found']))));
 
         $discord = new Discord($http, 'super-secret');
 
