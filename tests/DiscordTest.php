@@ -35,7 +35,7 @@ class DiscordTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_throws_an_exception_when_it_received_an_http_error()
     {
-        $this->setExpectedException(CouldNotSendNotification::class, 'Discord responded with an HTTP error');
+        $this->setExpectedException(CouldNotSendNotification::class, 'Discord responded with an HTTP error: 404');
 
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
