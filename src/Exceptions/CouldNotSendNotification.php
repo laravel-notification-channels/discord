@@ -10,6 +10,7 @@ class CouldNotSendNotification extends Exception
 {
     /**
      * @param \Psr\Http\Message\ResponseInterface $response
+     *
      * @return static
      */
     public static function serviceRespondedWithAnHttpError(ResponseInterface $response)
@@ -25,6 +26,7 @@ class CouldNotSendNotification extends Exception
 
     /**
      * @param array $response
+     *
      * @return static
      */
     public static function serviceRespondedWithAnApiError(array $response)
@@ -34,6 +36,7 @@ class CouldNotSendNotification extends Exception
 
     /**
      * @param \Exception $exception
+     *
      * @return static
      */
     public static function serviceCommunicationError(Exception $exception)

@@ -24,6 +24,7 @@ class DiscordChannel
      *
      * @param mixed $notifiable
      * @param \Illuminate\Notifications\Notification $notification
+     *
      * @return void
      *
      * @throws \NotificationChannels\Discord\Exceptions\CouldNotSendNotification

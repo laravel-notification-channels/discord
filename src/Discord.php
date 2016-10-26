@@ -38,6 +38,7 @@ class Discord
     /**
      * @param string $channel
      * @param array $data
+     *
      * @return array
      */
     public function send($channel, array $data)
@@ -47,6 +48,7 @@ class Discord
 
     /**
      * @param mixed $user
+     *
      * @return string
      */
     public function getPrivateChannel($user)
@@ -58,6 +60,7 @@ class Discord
      * @param string $verb
      * @param string $endpoint
      * @param array $data
+     *
      * @return array
      *
      * @throws \NotificationChannels\Discord\Exceptions\CouldNotSendNotification
