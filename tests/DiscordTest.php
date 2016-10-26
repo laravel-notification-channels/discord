@@ -33,9 +33,9 @@ class DiscordTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function it_throws_an_exception_when_it_received_an_http_error()
+    public function it_throws_an_exception_when_it_receives_an_http_error()
     {
-        $this->setExpectedException(CouldNotSendNotification::class, 'Discord responded with an HTTP error: 404');
+        $this->setExpectedException(CouldNotSendNotification::class, 'Discord responded with an HTTP error: 404: Not found');
 
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
@@ -46,7 +46,7 @@ class DiscordTest extends \PHPUnit_Framework_TestCase
                 ],
                 'json' => ['content' => 'a message'],
             ])
-            ->andThrow(new RequestException('Some error', Mockery::mock(Request::class), new Response(404)));
+            ->andThrow(RequestException::create(Mockery::spy(Request::class), new Response(404, [], json_encode(['message' => 'Not found']))));
 
         $discord = new Discord($http, 'super-secret');
 
