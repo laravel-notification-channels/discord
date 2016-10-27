@@ -23,8 +23,9 @@ class DiscordServiceProviderTest extends \PHPUnit_Framework_TestCase
 
         $app->shouldReceive('make')->with('config')->once()->andReturn($config);
         $app->shouldReceive('when')->with(Discord::class)->once()->andReturn($app);
-        $app->shouldReceive('needs')->with('$token')->once()->andReturn($app);
-        $app->shouldReceive('give')->with('a-secret-key')->once();
+        $app->shouldReceive('when')->with(SetupCommand::class)->once()->andReturn($app);
+        $app->shouldReceive('needs')->with('$token')->times(2)->andReturn($app);
+        $app->shouldReceive('give')->with('a-secret-key')->times(2);
 
         $provider = Mockery::mock(DiscordServiceProvider::class.'[commands]', [$app]);
 

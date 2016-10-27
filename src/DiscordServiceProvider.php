@@ -15,8 +15,14 @@ class DiscordServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        $token = $this->app->make('config')->get('services.discord.token');
+
         $this->app->when(Discord::class)
             ->needs('$token')
-            ->give($this->app->make('config')->get('services.discord.token'));
+            ->give($token);
+
+        $this->app->when(SetupCommand::class)
+            ->needs('$token')
+            ->give($token);
     }
 }
