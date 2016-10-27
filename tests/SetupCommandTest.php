@@ -48,6 +48,16 @@ class SetupCommandTest extends Orchestra
     }
 
     /** @test */
+    public function it_gives_a_websocket_client_for_the_given_gateway()
+    {
+        $command = new SetupCommand(new HttpClient, 'my-token');
+
+        $socket = $command->getSocket('my-gateway');
+
+        $this->assertInstanceOf(Client::class, $socket);
+    }
+
+    /** @test */
     public function it_fetches_the_websocket_gateway_url()
     {
         $http = Mockery::mock(HttpClient::class);
