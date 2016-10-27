@@ -13,6 +13,7 @@ class DiscordMessage
 
     /**
      * @param string $body
+     *
      * @return static
      */
     public static function create($body = '')
@@ -32,6 +33,7 @@ class DiscordMessage
      * Set the text content of the message.
      *
      * @param string $body
+     *
      * @return $this
      */
     public function body($body)

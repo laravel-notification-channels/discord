@@ -11,16 +11,22 @@ use NotificationChannels\Discord\Exceptions\CouldNotSendNotification;
 class Discord
 {
     /**
+     * Discord API base URL.
+     *
      * @var string
      */
     protected $baseUrl = 'https://discordapp.com/api';
 
     /**
+     * API HTTP client.
+     *
      * @var \GuzzleHttp\Client
      */
     protected $httpClient;
 
     /**
+     * Discord API token.
+     *
      * @var string
      */
     protected $token;
@@ -36,6 +42,8 @@ class Discord
     }
 
     /**
+     * Send a message to a Discord channel.
+     *
      * @param string $channel
      * @param array $data
      *
@@ -47,6 +55,8 @@ class Discord
     }
 
     /**
+     * Create and/or get a private channel with a Discord user.
+     *
      * @param mixed $user
      *
      * @return string
@@ -57,6 +67,8 @@ class Discord
     }
 
     /**
+     * Perform an HTTP request with the Discord API.
+     *
      * @param string $verb
      * @param string $endpoint
      * @param array $data
