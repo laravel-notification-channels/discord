@@ -12,7 +12,6 @@ use Illuminate\Contracts\Console\Kernel;
 use GuzzleHttp\Exception\RequestException;
 use Orchestra\Testbench\TestCase as Orchestra;
 use NotificationChannels\Discord\Commands\SetupCommand;
-use NotificationChannels\Discord\DiscordServiceProvider;
 
 class SetupCommandTest extends Orchestra
 {
