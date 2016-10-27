@@ -4,7 +4,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/laravel-notification-channels/discord/master.svg?style=flat-square)](https://travis-ci.org/laravel-notification-channels/discord)
 [![StyleCI](https://styleci.io/repos/65772492/shield)](https://styleci.io/repos/65772492)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/a5ce365e-4c06-4def-ae4a-1d2936f589ac.svg?style=flat-square)](https://insight.sensiolabs.com/projects/a5ce365e-4c06-4def-ae4a-1d2936f589ac)
+[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/199b0fdf-072e-4de0-99e6-79817c98d9b7.svg?style=flat-square)](https://insight.sensiolabs.com/projects/199b0fdf-072e-4de0-99e6-79817c98d9b7)
 [![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/discord.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/discord)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/discord/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/discord/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/discord.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/discord)
