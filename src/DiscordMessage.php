@@ -12,21 +12,31 @@ class DiscordMessage
     public $body;
 
     /**
-     * @param string $body
+     * The embedded object attached to the message
+     *
+     * @var array
+     */
+    public $embed;
+
+    /**
+     * @param string     $body
+     * @param array|null $embed
      *
      * @return static
      */
-    public static function create($body = '')
+    public static function create($body = '', $embed = [])
     {
         return new static($body);
     }
 
     /**
      * @param string $body
+     * @param array  $embed
      */
-    public function __construct($body = '')
+    public function __construct($body = '', $embed = [])
     {
         $this->body = $body;
+        $this->embed = $embed;
     }
 
     /**
@@ -39,6 +49,20 @@ class DiscordMessage
     public function body($body)
     {
         $this->body = $body;
+
+        return $this;
+    }
+
+    /**
+     * Set the embedded object
+     *
+     * @param $embed
+     *
+     * @return $this
+     */
+    public function embed($embed)
+    {
+        $this->embed = $embed;
 
         return $this;
     }
