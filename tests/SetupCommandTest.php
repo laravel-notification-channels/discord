@@ -7,7 +7,6 @@ use WebSocket\Client;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Client as HttpClient;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Contracts\Console\Kernel;
 use GuzzleHttp\Exception\RequestException;
 use Orchestra\Testbench\TestCase as Orchestra;
