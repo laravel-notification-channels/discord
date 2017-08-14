@@ -12,7 +12,7 @@ class DiscordMessage
     public $body;
 
     /**
-     * The embedded object attached to the message
+     * The embedded object attached to the message.
      *
      * @var array
      */
@@ -54,7 +54,7 @@ class DiscordMessage
     }
 
     /**
-     * Set the embedded object
+     * Set the embedded object.
      *
      * @param $embed
      *

@@ -24,7 +24,7 @@ class DiscordChannelTest extends \PHPUnit_Framework_TestCase
                 'json' => ['content' => 'Hello, Discord!', 'embed' => [
                     'title' => 'Object Title',
                     'url' => 'https://discordapp.com'
-                ]]
+                ]],
             ])
             ->andReturn(new Response(200));
 
@@ -69,7 +69,7 @@ class TestNotification extends \Illuminate\Notifications\Notification
             ->body('Hello, Discord!')
             ->embed([
                 'title' => 'Object Title',
-                'url' => 'https://discordapp.com'
+                'url' => 'https://discordapp.com',
             ]);
     }
 }
