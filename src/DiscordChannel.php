@@ -39,6 +39,7 @@ class DiscordChannel
 
         $this->discord->send($channel, [
             'content' => $message->body,
+            'embed' => $message->embed,
         ]);
     }
 }

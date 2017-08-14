@@ -21,7 +21,10 @@ class DiscordChannelTest extends \PHPUnit_Framework_TestCase
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
-                'json' => ['content' => 'Hello, Discord!'],
+                'json' => ['content' => 'Hello, Discord!', 'embed' => [
+                    'title' => 'Object Title',
+                    'url' => 'https://discordapp.com',
+                ]],
             ])
             ->andReturn(new Response(200));
 
@@ -63,6 +66,10 @@ class TestNotification extends \Illuminate\Notifications\Notification
     public function toDiscord()
     {
         return (new DiscordMessage)
-            ->body('Hello, Discord!');
+            ->body('Hello, Discord!')
+            ->embed([
+                'title' => 'Object Title',
+                'url' => 'https://discordapp.com',
+            ]);
     }
 }
