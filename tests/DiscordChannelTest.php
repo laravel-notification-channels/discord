@@ -23,7 +23,7 @@ class DiscordChannelTest extends \PHPUnit_Framework_TestCase
                 ],
                 'json' => ['content' => 'Hello, Discord!', 'embed' => [
                     'title' => 'Object Title',
-                    'url' => 'https://discordapp.com'
+                    'url' => 'https://discordapp.com',
                 ]],
             ])
             ->andReturn(new Response(200));
