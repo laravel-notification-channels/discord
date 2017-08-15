@@ -1,4 +1,4 @@
-# Discord notification channel for Laravel 5.3 [WIP]
+# Discord notification channel for Laravel 5.3
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/discord.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/discord)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -140,6 +140,7 @@ class GameChallengeNotification extends Notification
 ### Available Message methods
 
 * `body(string)`: Set the content of the message. ([Supports basic markdown](https://support.discordapp.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-))
+* `embed(array)`: Set the embedded content. ([View embed structure](https://discordapp.com/developers/docs/resources/channel#embed-object))
 
 ## Changelog
 
