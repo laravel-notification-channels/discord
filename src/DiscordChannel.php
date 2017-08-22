@@ -25,7 +25,7 @@ class DiscordChannel
      * @param mixed $notifiable
      * @param \Illuminate\Notifications\Notification $notification
      *
-     * @return void
+     * @return array
      *
      * @throws \NotificationChannels\Discord\Exceptions\CouldNotSendNotification
      */
@@ -37,7 +37,7 @@ class DiscordChannel
 
         $message = $notification->toDiscord($notifiable);
 
-        $this->discord->send($channel, [
+        return $this->discord->send($channel, [
             'content' => $message->body,
             'embed' => $message->embed,
         ]);
