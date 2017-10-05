@@ -2,8 +2,8 @@
 
 namespace NotificationChannels\Discord;
 
-use Illuminate\Notifications\Notification;
 use Log;
+use Illuminate\Notifications\Notification;
 
 class DiscordChannel
 {
@@ -39,11 +39,11 @@ class DiscordChannel
         $message = $notification->toDiscord($notifiable);
 
         if (empty(config('services.discord.token'))) {
-            Log::debug("Message to discord channel №{$channel}.\nText: {$message->body}");
+            Log::debug("Message to discord channel №{$channel}.\nText:\n{$message->body}");
 
             return;
         }
-        
+
         return $this->discord->send($channel, [
             'content' => $message->body,
             'embed' => $message->embed,
