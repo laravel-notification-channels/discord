@@ -26,7 +26,7 @@ class DiscordMessage
      */
     public static function create($body = '', $embed = [])
     {
-        return new static($body);
+        return new static($body, $embed);
     }
 
     /**
