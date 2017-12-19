@@ -115,7 +115,7 @@ class SetupCommandTest extends Orchestra
                 ],
             ],
         ]))->once();
-        $socket->shouldReceive('receive')->once()->andReturn(json_encode(['t' => 'READY']));
+        $socket->shouldReceive('receive')->once()->andReturn(json_encode(['op' => 10]));
 
         $command->shouldReceive('confirm')->with('Is the bot already added to your server?')->once()->andReturn(true);
         $command->shouldReceive('warn')->with("Attempting to identify the bot with Discord's websocket gateway...")->once();
