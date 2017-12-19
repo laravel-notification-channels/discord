@@ -99,7 +99,7 @@ class SetupCommand extends Command
         ]));
 
         $response = $client->receive();
-        $identified = Arr::get(json_decode($response, true), 't') === 'READY';
+        $identified = Arr::get(json_decode($response, true), 'op') === 10;
 
         if (! $identified) {
             $this->error("Discord responded with an error while trying to identify the bot: $response");
