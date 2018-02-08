@@ -1,4 +1,4 @@
-# Discord notification channel for Laravel 5.3
+# Discord notification channel for Laravel 5.1 to 5.6
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/discord.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/discord)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -8,7 +8,7 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/discord/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/discord/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/discord.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/discord)
 
-This package makes it easy to send notifications using the [Discord bot API](https://discordapp.com/developers/docs/intro) with Laravel 5.3.
+This package makes it easy to send notifications using the [Discord bot API](https://discordapp.com/developers/docs/intro) with Laravel.
 
 ## Contents
 
