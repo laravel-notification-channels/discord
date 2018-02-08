@@ -9,7 +9,7 @@ use NotificationChannels\Discord\Discord;
 use NotificationChannels\Discord\DiscordChannel;
 use NotificationChannels\Discord\DiscordMessage;
 
-class DiscordChannelTest extends \PHPUnit_Framework_TestCase
+class DiscordChannelTest extends BaseTest
 {
     /** @test */
     public function it_can_send_a_notification()

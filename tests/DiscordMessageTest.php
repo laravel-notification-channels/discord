@@ -4,7 +4,7 @@ namespace NotificationChannels\Discord\Tests;
 
 use NotificationChannels\Discord\DiscordMessage;
 
-class DiscordMessageTest extends \PHPUnit_Framework_TestCase
+class DiscordMessageTest extends BaseTest
 {
     /** @test */
     public function it_accepts_the_message_body_during_initialization()

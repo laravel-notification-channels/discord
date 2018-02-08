@@ -11,7 +11,7 @@ use NotificationChannels\Discord\Discord;
 use GuzzleHttp\Exception\RequestException;
 use NotificationChannels\Discord\Exceptions\CouldNotSendNotification;
 
-class DiscordTest extends \PHPUnit_Framework_TestCase
+class DiscordTest extends BaseTest
 {
     /** @test */
     public function it_can_get_a_private_channel_for_a_user()
@@ -35,7 +35,8 @@ class DiscordTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_throws_an_exception_when_it_receives_an_http_error()
     {
-        $this->setExpectedException(CouldNotSendNotification::class, 'Discord responded with an HTTP error: 404: Not found');
+        $this->expectException(CouldNotSendNotification::class);
+        $this->expectExceptionMessage('Discord responded with an HTTP error: 404: Not found');
 
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
@@ -56,7 +57,8 @@ class DiscordTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_throws_an_exception_when_it_could_not_talk_to_discord()
     {
-        $this->setExpectedException(CouldNotSendNotification::class, 'Communication with Discord failed');
+        $this->expectException(CouldNotSendNotification::class);
+        $this->expectExceptionMessage('Communication with Discord failed');
 
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
@@ -77,7 +79,8 @@ class DiscordTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_wraps_and_rethrows_a_caught_exception()
     {
-        $this->setExpectedException(CouldNotSendNotification::class, 'Communication with Discord failed');
+        $this->expectException(CouldNotSendNotification::class);
+        $this->expectExceptionMessage('Communication with Discord failed');
 
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
@@ -98,7 +101,8 @@ class DiscordTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function it_throws_an_exception_if_the_api_responds_with_an_error()
     {
-        $this->setExpectedException(CouldNotSendNotification::class, 'Discord responded with an API error: 10003: Unknown channel');
+        $this->expectException(CouldNotSendNotification::class);
+        $this->expectExceptionMessage('Discord responded with an API error: 10003: Unknown channel');
 
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')

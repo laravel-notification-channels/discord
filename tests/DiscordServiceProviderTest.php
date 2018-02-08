@@ -9,7 +9,7 @@ use Illuminate\Contracts\Foundation\Application;
 use NotificationChannels\Discord\Commands\SetupCommand;
 use NotificationChannels\Discord\DiscordServiceProvider;
 
-class DiscordServiceProviderTest extends \PHPUnit_Framework_TestCase
+class DiscordServiceProviderTest extends BaseTest
 {
     /** @test */
     public function it_loads_the_setup_command_and_provides_the_discord_token()
