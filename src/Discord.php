@@ -42,24 +42,22 @@ class Discord
     }
 
     /**
-     * Send a message to a Discord channel.
-     *
-     * @param string $channel
+     * @param       $channel
      * @param array $data
      *
      * @return array
+     * @throws CouldNotSendNotification
      */
     public function send($channel, array $data)
     {
-        return $this->request('POST', 'channels/'.$channel.'/messages', $data);
+        return $this->request('POST', $channel, $data);
     }
 
     /**
-     * Create and/or get a private channel with a Discord user.
+     * @param $user
      *
-     * @param mixed $user
-     *
-     * @return string
+     * @return mixed
+     * @throws CouldNotSendNotification
      */
     public function getPrivateChannel($user)
     {
@@ -70,23 +68,21 @@ class Discord
      * Perform an HTTP request with the Discord API.
      *
      * @param string $verb
-     * @param string $endpoint
+     * @param string $url
      * @param array $data
      *
      * @return array
      *
      * @throws \NotificationChannels\Discord\Exceptions\CouldNotSendNotification
      */
-    protected function request($verb, $endpoint, array $data)
+    protected function request($verb, $url, array $data)
     {
-        $url = rtrim($this->baseUrl, '/').'/'.ltrim($endpoint, '/');
-
         try {
             $response = $this->httpClient->request($verb, $url, [
                 'headers' => [
-                    'Authorization' => 'Bot '.$this->token,
+                    'Accept' => 'application/json',
                 ],
-                'json' => $data,
+                'form_params' => $data
             ]);
         } catch (RequestException $exception) {
             if ($response = $exception->getResponse()) {
