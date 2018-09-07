@@ -1,4 +1,4 @@
-# Discord notification channel for Laravel 5.6
+# Discord notification channel for Laravel 5.6+
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/discord.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/discord)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -12,16 +12,18 @@ This package makes it easy to send notifications using the [Discord bot API](htt
 
 ## Contents
 
-- [Installation](#installation)
-	- [Setting up your Discord bot](#setting-up-your-discord-bot)
-- [Usage](#usage)
-	- [Available Message methods](#available-message-methods)
-- [Changelog](#changelog)
-- [Testing](#testing)
-- [Security](#security)
-- [Contributing](#contributing)
-- [Credits](#credits)
-- [License](#license)
+- [Discord notification channel for Laravel 5.6+](#discord-notification-channel-for-laravel-56)
+    - [Contents](#contents)
+    - [Installation](#installation)
+        - [Setting up your Discord bot](#setting-up-your-discord-bot)
+    - [Usage](#usage)
+        - [Available Message methods](#available-message-methods)
+    - [Changelog](#changelog)
+    - [Testing](#testing)
+    - [Security](#security)
+    - [Contributing](#contributing)
+    - [Credits](#credits)
+    - [License](#license)
 
 
 ## Installation
@@ -79,24 +81,24 @@ class Guild extends Eloquent
 
 > **NOTE**: Discord handles direct messages as though they are a regular channel. If you wish to allow users to receive direct messages from your bot, you will need to create a private channel with that user.
 > An example workflow may look like the following:
-> 
+>
 > 1. Your `users` table has two discord columns: `discord_user` and `discord_channel`
 > 2. When a user updates their Discord user ID (`discord_user`), generate and save a channel ID (`discord_channel`)
 > 3. Return the user's `discord_channel` in the `routeNotificationForDiscord` method on the User model
-> 
+>
 > You can generate direct message channels by using the `getPrivateChannel` method in `NotificationChannels\Discord\Discord`:
-> 
+>
 > ```php
 > use NotificationChannels\Discord\Discord;
 > // ...
-> 
+>
 > class UserDiscordSettingsController
 > {
 >     public function store(Request $request)
 >     {
 >         $user = $request->input('discord_user');
 >         $channel = app(Discord::class)->getPrivateChannel($user);
->         
+>
 >         Auth::user()->update([
 >             'discord_user' => $user,
 >             'discord_channel' => $channel,
