@@ -19,6 +19,7 @@
     ],
     "require": {
         "php": ">=7.1.2",
+        "ext-json": "*",
         "guzzlehttp/guzzle": "~6.0",
         "illuminate/notifications": "^5.6",
         "illuminate/support": "^5.6",
@@ -31,7 +32,7 @@
         "orchestra/testbench": "^3.6",
         "laravel/framework": "^5.6",
         "phpunit/phpunit": "7.*",
-        "orchestra/database": "3.6.x-dev"
+        "orchestra/database": "3.8.x-dev"
     },
     "autoload": {
         "psr-4": {
