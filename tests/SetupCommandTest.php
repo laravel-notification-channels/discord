@@ -24,9 +24,8 @@ class SetupCommandTest extends Orchestra
 
         $this->app[Kernel::class]->registerCommand($command);
 
-        $returnCode = $this->artisan('discord:setup');
-
-        $this->assertEquals($returnCode, -1);
+        $this->artisan('discord:setup')
+             ->assertExitCode(-1);
     }
 
     /** @test */
@@ -41,9 +40,8 @@ class SetupCommandTest extends Orchestra
 
         $this->app[Kernel::class]->registerCommand($command);
 
-        $returnCode = $this->artisan('discord:setup');
-
-        $this->assertEquals($returnCode, -1);
+        $this->artisan('discord:setup')
+             ->assertExitCode(-1);
     }
 
     /** @test */
@@ -164,8 +162,7 @@ class SetupCommandTest extends Orchestra
 
         $this->app[Kernel::class]->registerCommand($command);
 
-        $returnCode = $this->artisan('discord:setup');
-
-        $this->assertEquals($returnCode, -1);
+        $this->artisan('discord:setup')
+             ->assertExitCode(-1);
     }
 }
