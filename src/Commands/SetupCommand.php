@@ -86,14 +86,10 @@ class SetupCommand extends Command
             'op' => 2,
             'd' => [
                 'token' => $this->token,
-                'v' => 3,
-                'compress' => false,
                 'properties' => [
                     '$os' => PHP_OS,
                     '$browser' => 'laravel-notification-channels-discord',
                     '$device' => 'laravel-notification-channels-discord',
-                    '$referrer' => '',
-                    '$referring_domain' => '',
                 ],
             ],
         ]));
@@ -132,11 +128,7 @@ class SetupCommand extends Command
         $gateway = $this->gateway;
 
         try {
-            $response = $this->guzzle->get('https://discordapp.com/api/gateway', [
-                'headers' => [
-                    'Authorization' => 'Bot '.$this->token,
-                ],
-            ]);
+            $response = $this->guzzle->get('https://discordapp.com/api/gateway');
 
             $gateway = Arr::get(json_decode($response->getBody(), true), 'url', $gateway);
         } catch (Exception $e) {

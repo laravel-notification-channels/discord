@@ -59,11 +59,7 @@ class SetupCommandTest extends Orchestra
     {
         $http = Mockery::mock(HttpClient::class);
 
-        $http->shouldReceive('get')->with('https://discordapp.com/api/gateway', [
-            'headers' => [
-                'Authorization' => 'Bot my-token',
-            ],
-        ])->once()->andReturn(new Response(200, [], json_encode(['url' => 'wss://test-gateway.discord.gg'])));
+        $http->shouldReceive('get')->with('https://discordapp.com/api/gateway')->once()->andReturn(new Response(200, [], json_encode(['url' => 'wss://test-gateway.discord.gg'])));
 
         $command = new SetupCommand($http, 'my-token');
 
@@ -77,11 +73,7 @@ class SetupCommandTest extends Orchestra
     {
         $http = Mockery::mock(HttpClient::class);
 
-        $http->shouldReceive('get')->with('https://discordapp.com/api/gateway', [
-            'headers' => [
-                'Authorization' => 'Bot my-token',
-            ],
-        ])->once()->andThrow(new RequestException('Not found', Mockery::mock(Request::class), new Response(404, [], json_encode(['message' => 'Not found']))));
+        $http->shouldReceive('get')->with('https://discordapp.com/api/gateway')->once()->andThrow(new RequestException('Not found', Mockery::mock(Request::class), new Response(404, [], json_encode(['message' => 'Not found']))));
 
         $command = Mockery::mock(SetupCommand::class.'[warn]', [$http, 'my-token']);
 
@@ -102,14 +94,10 @@ class SetupCommandTest extends Orchestra
             'op' => 2,
             'd' => [
                 'token' => 'my-token',
-                'v' => 3,
-                'compress' => false,
                 'properties' => [
                     '$os' => PHP_OS,
                     '$browser' => 'laravel-notification-channels-discord',
                     '$device' => 'laravel-notification-channels-discord',
-                    '$referrer' => '',
-                    '$referring_domain' => '',
                 ],
             ],
         ]))->once();
@@ -137,14 +125,10 @@ class SetupCommandTest extends Orchestra
             'op' => 2,
             'd' => [
                 'token' => 'my-token',
-                'v' => 3,
-                'compress' => false,
                 'properties' => [
                     '$os' => PHP_OS,
                     '$browser' => 'laravel-notification-channels-discord',
                     '$device' => 'laravel-notification-channels-discord',
-                    '$referrer' => '',
-                    '$referring_domain' => '',
                 ],
             ],
         ]))->once();
