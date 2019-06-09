@@ -25,7 +25,7 @@
         "illuminate/support": "^5.6",
         "illuminate/queue": "^5.6",
         "illuminate/console": "^5.6",
-        "textalk/websocket": "1.0.*"
+        "textalk/websocket": "^1.2"
     },
     "require-dev": {
         "mockery/mockery": "^1.0",
