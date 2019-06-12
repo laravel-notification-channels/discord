@@ -55,15 +55,15 @@ class Discord
     }
 
     /**
-     * Create and/or get a private channel with a Discord user.
+     * Get a private channel with another Discord user from their snowflake ID.
      *
-     * @param mixed $user
+     * @param string $userId
      *
      * @return string
      */
-    public function getPrivateChannel($user)
+    public function getPrivateChannel($userId)
     {
-        return $this->request('POST', 'users/@me/channels', ['recipient_id' => $user])['id'];
+        return $this->request('POST', 'users/@me/channels', ['recipient_id' => $userId])['id'];
     }
 
     /**

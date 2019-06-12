@@ -80,32 +80,34 @@ class Guild extends Eloquent
 ```
 
 > **NOTE**: Discord handles direct messages as though they are a regular channel. If you wish to allow users to receive direct messages from your bot, you will need to create a private channel with that user.
+>
 > An example workflow may look like the following:
 >
-> 1. Your `users` table has two discord columns: `discord_user` and `discord_channel`
-> 2. When a user updates their Discord user ID (`discord_user`), generate and save a channel ID (`discord_channel`)
-> 3. Return the user's `discord_channel` in the `routeNotificationForDiscord` method on the User model
+> 1. Your `users` table has two discord columns: `discord_user_id` and `discord_private_channel_id`
+> 2. When a user updates their Discord user ID (`discord_user_id`), generate and save a private channel ID (`discord_private_channel_id`)
+> 3. Return the user's `discord_private_channel_id` in the `routeNotificationForDiscord` method on the `User` model
 >
-> You can generate direct message channels by using the `getPrivateChannel` method in `NotificationChannels\Discord\Discord`:
+> You can generate direct message channels by using the `getPrivateChannel` method in the `NotificationChannels\Discord\Discord` class
 >
 > ```php
 > use NotificationChannels\Discord\Discord;
-> // ...
 >
 > class UserDiscordSettingsController
 > {
 >     public function store(Request $request)
 >     {
->         $user = $request->input('discord_user');
->         $channel = app(Discord::class)->getPrivateChannel($user);
+>         $userId = $request->input('discord_user_id');
+>         $channelId = app(Discord::class)->getPrivateChannel($userId);
 >
 >         Auth::user()->update([
->             'discord_user' => $user,
->             'discord_channel' => $channel,
+>             'discord_user_id' => $userId,
+>             'discord_private_channel_id' => $channelId,
 >         ]);
 >     }
 > }
 > ```
+>
+> Please take note that the `getPrivateChannel` method only accepts [Discord's snowflake IDs](https://discordapp.com/developers/docs/reference#snowflakes). There is no API route provided by Discord to lookup a user's ID by their name and tag, and the process for copying and pasting a user ID can be confusing to some users. Because of this, it is recommended to add the option for users to connect their Discord account to their account within your application either by logging in with Discord or linking it to their pre-existing account.
 
 You may now tell Laravel to send notifications to Discord channels in the `via` method:
 
