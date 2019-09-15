@@ -18,19 +18,19 @@
         }
     ],
     "require": {
-        "php": ">=7.1.2",
+        "php": "^7.2",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^6.3",
-        "illuminate/notifications": "^5.6||^6.0",
-        "illuminate/support": "^5.6||^6.0",
-        "illuminate/queue": "^5.6||^6.0",
-        "illuminate/console": "^5.6||^6.0",
+        "illuminate/notifications": "^6.0",
+        "illuminate/support": "^6.0",
+        "illuminate/queue": "^6.0",
+        "illuminate/console": "^6.0",
         "textalk/websocket": "^1.2"
     },
     "require-dev": {
         "mockery/mockery": "^1.0",
-        "orchestra/testbench": "^3.8||^4.0",
-        "phpunit/phpunit": "^7.0||^8.0"
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {
