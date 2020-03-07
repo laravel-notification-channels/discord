@@ -2,11 +2,11 @@
 
 namespace NotificationChannels\Discord\Tests;
 
-use Mockery;
-use NotificationChannels\Discord\Discord;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Contracts\Foundation\Application;
+use Mockery;
 use NotificationChannels\Discord\Commands\SetupCommand;
+use NotificationChannels\Discord\Discord;
 use NotificationChannels\Discord\DiscordServiceProvider;
 
 class DiscordServiceProviderTest extends BaseTest

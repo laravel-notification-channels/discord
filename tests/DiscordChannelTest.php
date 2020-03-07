@@ -2,9 +2,9 @@
 
 namespace NotificationChannels\Discord\Tests;
 
-use Mockery;
-use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Psr7\Response;
+use Mockery;
 use NotificationChannels\Discord\Discord;
 use NotificationChannels\Discord\DiscordChannel;
 use NotificationChannels\Discord\DiscordMessage;

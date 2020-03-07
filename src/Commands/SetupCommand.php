@@ -3,10 +3,10 @@
 namespace NotificationChannels\Discord\Commands;
 
 use Exception;
-use WebSocket\Client;
-use Illuminate\Support\Arr;
-use Illuminate\Console\Command;
 use GuzzleHttp\Client as HttpClient;
+use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
+use WebSocket\Client;
 
 class SetupCommand extends Command
 {

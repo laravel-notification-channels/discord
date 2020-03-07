@@ -2,15 +2,15 @@
 
 namespace NotificationChannels\Discord\Tests;
 
-use Mockery;
-use WebSocket\Client;
+use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Client as HttpClient;
 use Illuminate\Contracts\Console\Kernel;
-use GuzzleHttp\Exception\RequestException;
-use Orchestra\Testbench\TestCase as Orchestra;
+use Mockery;
 use NotificationChannels\Discord\Commands\SetupCommand;
+use Orchestra\Testbench\TestCase as Orchestra;
+use WebSocket\Client;
 
 class SetupCommandTest extends Orchestra
 {
