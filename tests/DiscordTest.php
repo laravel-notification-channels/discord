@@ -2,13 +2,13 @@
 
 namespace NotificationChannels\Discord\Tests;
 
-use Mockery;
 use Exception;
+use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Client as HttpClient;
+use Mockery;
 use NotificationChannels\Discord\Discord;
-use GuzzleHttp\Exception\RequestException;
 use NotificationChannels\Discord\Exceptions\CouldNotSendNotification;
 
 class DiscordTest extends BaseTest
