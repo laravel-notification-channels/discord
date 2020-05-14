@@ -15,7 +15,7 @@ class Discord
      *
      * @var string
      */
-    protected $baseUrl = 'https://discordapp.com/api';
+    protected $baseUrl = 'https://discord.com/api';
 
     /**
      * API HTTP client.
