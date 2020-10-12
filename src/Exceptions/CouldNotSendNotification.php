@@ -13,7 +13,7 @@ class CouldNotSendNotification extends Exception
      *
      * @return static
      */
-    public static function serviceRespondedWithAnHttpError(ResponseInterface $response)
+    public static function serviceRespondedWithAnHttpError(ResponseInterface $response, $code, $exception)
     {
         $message = "Discord responded with an HTTP error: {$response->getStatusCode()}";
 
@@ -21,7 +21,7 @@ class CouldNotSendNotification extends Exception
             $message .= ": $error";
         }
 
-        return new static($message);
+        return new static($message, $code, $exception);
     }
 
     /**

@@ -90,7 +90,7 @@ class Discord
             ]);
         } catch (RequestException $exception) {
             if ($response = $exception->getResponse()) {
-                throw CouldNotSendNotification::serviceRespondedWithAnHttpError($response);
+                throw CouldNotSendNotification::serviceRespondedWithAnHttpError($response, 0, $exception);
             }
 
             throw CouldNotSendNotification::serviceCommunicationError($exception);
