@@ -3,9 +3,9 @@
 namespace NotificationChannels\Discord;
 
 use Exception;
-use Illuminate\Support\Arr;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Arr;
 use NotificationChannels\Discord\Exceptions\CouldNotSendNotification;
 
 class Discord

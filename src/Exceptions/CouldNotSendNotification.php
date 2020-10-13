@@ -10,8 +10,8 @@ class CouldNotSendNotification extends Exception
 {
     /**
      * @param \Psr\Http\Message\ResponseInterface $response
-	 * @param int $code
-	 * @param \Exception $exception
+     * @param int $code
+     * @param \Exception $exception
      *
      * @return static
      */
@@ -28,7 +28,7 @@ class CouldNotSendNotification extends Exception
 
     /**
      * @param array $response
-	 * @param int $code
+     * @param int $code
      *
      * @return static
      */
