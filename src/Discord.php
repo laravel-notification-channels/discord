@@ -90,7 +90,7 @@ class Discord
             ]);
         } catch (RequestException $exception) {
             if ($response = $exception->getResponse()) {
-                throw CouldNotSendNotification::serviceRespondedWithAnHttpError($response, 0, $exception);
+                throw CouldNotSendNotification::serviceRespondedWithAnHttpError($response, $response->getStatusCode(), $exception);
             }
 
             throw CouldNotSendNotification::serviceCommunicationError($exception);
@@ -101,7 +101,7 @@ class Discord
         $body = json_decode($response->getBody(), true);
 
         if (Arr::get($body, 'code', 0) > 0) {
-            throw CouldNotSendNotification::serviceRespondedWithAnApiError($body);
+            throw CouldNotSendNotification::serviceRespondedWithAnApiError($body, $body['code']);
         }
 
         return $body;

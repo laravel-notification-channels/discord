@@ -10,6 +10,8 @@ class CouldNotSendNotification extends Exception
 {
     /**
      * @param \Psr\Http\Message\ResponseInterface $response
+	 * @param int $code
+	 * @param \Exception $exception
      *
      * @return static
      */
@@ -26,12 +28,13 @@ class CouldNotSendNotification extends Exception
 
     /**
      * @param array $response
+	 * @param int $code
      *
      * @return static
      */
-    public static function serviceRespondedWithAnApiError(array $response)
+    public static function serviceRespondedWithAnApiError(array $response, $code, $exception)
     {
-        return new static("Discord responded with an API error: {$response['code']}: {$response['message']}");
+        return new static("Discord responded with an API error: {$response['code']}: {$response['message']}", $code);
     }
 
     /**
@@ -41,6 +44,6 @@ class CouldNotSendNotification extends Exception
      */
     public static function serviceCommunicationError(Exception $exception)
     {
-        return new static("Communication with Discord failed: {$exception->getCode()}: {$exception->getMessage()}");
+        return new static("Communication with Discord failed: {$exception->getCode()}: {$exception->getMessage()}", $exception->getCode(), $exception);
     }
 }
