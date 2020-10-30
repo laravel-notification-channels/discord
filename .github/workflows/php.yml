@@ -1,0 +1,40 @@
+name: PHP
+
+on: [push, pull_request]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 15
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        php: ['7.2', '7.3', '7.4']
+        dependency-version: [prefer-lowest, prefer-stable]
+
+    name: PHP ${{ matrix.php }} - OS ${{ matrix.os }} - ${{ matrix.dependency-version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php }}
+          extension-csv: mbstring, xdebug
+          coverage: pcov
+
+      - name: Install dependencies
+        run: composer update --${{ matrix.dependency-version }} --no-interaction --prefer-dist
+
+      - name: Lint composer.json
+        run: composer validate
+
+      - name: Run Tests
+        run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+
+      - name: Upload Coverage to Scrutinizer
+        run: |
+          wget https://scrutinizer-ci.com/ocular.phar
+          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
