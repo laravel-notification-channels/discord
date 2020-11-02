@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   run:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 15
       fail-fast: false
