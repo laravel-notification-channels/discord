@@ -10,7 +10,6 @@ use Illuminate\Contracts\Console\Kernel;
 use Mockery;
 use NotificationChannels\Discord\Commands\SetupCommand;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Psr\Log\LoggerInterface;
 use WebSocket\Client;
 
 class SetupCommandTest extends Orchestra
