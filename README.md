@@ -8,7 +8,7 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/discord/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/discord/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/discord.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/discord)
 
-This package makes it easy to send notifications using the [Discord bot API](https://discordapp.com/developers/docs/intro) with Laravel.
+This package makes it easy to send notifications using the [Discord bot API](https://discord.com/developers/docs/intro) with Laravel.
 
 ## Contents
 
@@ -46,7 +46,7 @@ Next, you must load the service provider:
 
 ### Setting up your Discord bot
 
-1. [Create a Discord application.](https://discordapp.com/developers/applications/me/create)
+1. [Create a Discord application.](https://discord.com/developers/applications)
 2. Click the `Create a Bot User` button on your Discord application.
 3. Paste your bot's API token, found under `App Bot User`, in your `services.php` config file:
 
@@ -107,7 +107,7 @@ class Guild extends Eloquent
 > }
 > ```
 >
-> Please take note that the `getPrivateChannel` method only accepts [Discord's snowflake IDs](https://discordapp.com/developers/docs/reference#snowflakes). There is no API route provided by Discord to lookup a user's ID by their name and tag, and the process for copying and pasting a user ID can be confusing to some users. Because of this, it is recommended to add the option for users to connect their Discord account to their account within your application either by logging in with Discord or linking it to their pre-existing account.
+> Please take note that the `getPrivateChannel` method only accepts [Discord's snowflake IDs](https://discord.com/developers/docs/reference#snowflakes). There is no API route provided by Discord to lookup a user's ID by their name and tag, and the process for copying and pasting a user ID can be confusing to some users. Because of this, it is recommended to add the option for users to connect their Discord account to their account within your application either by logging in with Discord or linking it to their pre-existing account.
 
 You may now tell Laravel to send notifications to Discord channels in the `via` method:
 
@@ -142,8 +142,8 @@ class GameChallengeNotification extends Notification
 
 ### Available Message methods
 
-* `body(string)`: Set the content of the message. ([Supports basic markdown](https://support.discordapp.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-))
-* `embed(array)`: Set the embedded content. ([View embed structure](https://discordapp.com/developers/docs/resources/channel#embed-object))
+* `body(string)`: Set the content of the message. ([Supports basic markdown](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-))
+* `embed(array)`: Set the embedded content. ([View embed structure](https://discord.com/developers/docs/resources/channel#embed-object))
 
 ## Changelog
 

@@ -64,7 +64,7 @@ class SetupCommand extends Command
         if (! $this->confirm('Is the bot already added to your server?')) {
             $clientId = $this->ask('What is your Discord app client ID?');
 
-            $this->warn('Add the bot to your server by visiting this link: https://discordapp.com/oauth2/authorize?&client_id='.$clientId.'&scope=bot&permissions=0');
+            $this->warn('Add the bot to your server by visiting this link: https://discord.com/oauth2/authorize?&client_id='.$clientId.'&scope=bot&permissions=0');
 
             if (! $this->confirm('Continue?', true)) {
                 return -1;
@@ -81,7 +81,7 @@ class SetupCommand extends Command
 
         // Discord requires all bots to connect via a websocket connection and
         // identify at least once before any API requests over HTTP are allowed.
-        // https://discordapp.com/developers/docs/topics/gateway#gateway-identify
+        // https://discord.com/developers/docs/topics/gateway#gateway-identify
         $client->send(json_encode([
             'op' => 2,
             'd' => [
@@ -128,7 +128,7 @@ class SetupCommand extends Command
         $gateway = $this->gateway;
 
         try {
-            $response = $this->guzzle->get('https://discordapp.com/api/gateway');
+            $response = $this->guzzle->get('https://discord.com/api/gateway');
 
             $gateway = Arr::get(json_decode($response->getBody(), true), 'url', $gateway);
         } catch (Exception $e) {

@@ -35,7 +35,7 @@ class SetupCommandTest extends Orchestra
 
         $command->shouldReceive('confirm')->with('Is the bot already added to your server?')->once()->andReturn(false);
         $command->shouldReceive('ask')->with('What is your Discord app client ID?')->once()->andReturn('my-client-id');
-        $command->shouldReceive('warn')->with('Add the bot to your server by visiting this link: https://discordapp.com/oauth2/authorize?&client_id=my-client-id&scope=bot&permissions=0');
+        $command->shouldReceive('warn')->with('Add the bot to your server by visiting this link: https://discord.com/oauth2/authorize?&client_id=my-client-id&scope=bot&permissions=0');
         $command->shouldReceive('confirm')->with('Continue?', true)->once()->andReturn(false);
 
         $this->app[Kernel::class]->registerCommand($command);
@@ -59,7 +59,7 @@ class SetupCommandTest extends Orchestra
     {
         $http = Mockery::mock(HttpClient::class);
 
-        $http->shouldReceive('get')->with('https://discordapp.com/api/gateway')->once()->andReturn(new Response(200, [], json_encode(['url' => 'wss://test-gateway.discord.gg'])));
+        $http->shouldReceive('get')->with('https://discord.com/api/gateway')->once()->andReturn(new Response(200, [], json_encode(['url' => 'wss://test-gateway.discord.gg'])));
 
         $command = new SetupCommand($http, 'my-token');
 
@@ -73,7 +73,7 @@ class SetupCommandTest extends Orchestra
     {
         $http = Mockery::mock(HttpClient::class);
 
-        $http->shouldReceive('get')->with('https://discordapp.com/api/gateway')->once()->andThrow(new RequestException('Not found', Mockery::mock(Request::class), new Response(404, [], json_encode(['message' => 'Not found']))));
+        $http->shouldReceive('get')->with('https://discord.com/api/gateway')->once()->andThrow(new RequestException('Not found', Mockery::mock(Request::class), new Response(404, [], json_encode(['message' => 'Not found']))));
 
         $command = Mockery::mock(SetupCommand::class.'[warn]', [$http, 'my-token']);
 
@@ -136,7 +136,7 @@ class SetupCommandTest extends Orchestra
 
         $command->shouldReceive('confirm')->with('Is the bot already added to your server?')->once()->andReturn(false);
         $command->shouldReceive('ask')->with('What is your Discord app client ID?')->once()->andReturn('my-client-id');
-        $command->shouldReceive('warn')->with('Add the bot to your server by visiting this link: https://discordapp.com/oauth2/authorize?&client_id=my-client-id&scope=bot&permissions=0');
+        $command->shouldReceive('warn')->with('Add the bot to your server by visiting this link: https://discord.com/oauth2/authorize?&client_id=my-client-id&scope=bot&permissions=0');
         $command->shouldReceive('confirm')->with('Continue?', true)->once()->andReturn(true);
         $command->shouldReceive('warn')->with("Attempting to identify the bot with Discord's websocket gateway...")->once();
         $command->shouldReceive('getGateway')->once()->andReturn('wss://gateway.discord.gg');

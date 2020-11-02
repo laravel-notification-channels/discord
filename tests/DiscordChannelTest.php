@@ -17,13 +17,13 @@ class DiscordChannelTest extends BaseTest
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
             ->once()
-            ->with('POST', 'https://discordapp.com/api/channels/0123456789/messages', [
+            ->with('POST', 'https://discord.com/api/channels/0123456789/messages', [
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
                 'json' => ['content' => 'Hello, Discord!', 'embed' => [
                     'title' => 'Object Title',
-                    'url' => 'https://discordapp.com',
+                    'url' => 'https://discord.com',
                 ]],
             ])
             ->andReturn(new Response(200));
@@ -69,7 +69,7 @@ class TestNotification extends \Illuminate\Notifications\Notification
             ->body('Hello, Discord!')
             ->embed([
                 'title' => 'Object Title',
-                'url' => 'https://discordapp.com',
+                'url' => 'https://discord.com',
             ]);
     }
 }
