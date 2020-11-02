@@ -32,7 +32,7 @@ class CouldNotSendNotification extends Exception
      *
      * @return static
      */
-    public static function serviceRespondedWithAnApiError(array $response, $code, $exception)
+    public static function serviceRespondedWithAnApiError(array $response, $code, $exception = null)
     {
         return new static("Discord responded with an API error: {$response['code']}: {$response['message']}", $code);
     }

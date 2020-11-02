@@ -19,7 +19,7 @@ class DiscordTest extends BaseTest
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
             ->once()
-            ->with('POST', 'https://discordapp.com/api/users/@me/channels', [
+            ->with('POST', 'https://discord.com/api/users/@me/channels', [
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
@@ -41,7 +41,7 @@ class DiscordTest extends BaseTest
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
             ->once()
-            ->with('POST', 'https://discordapp.com/api/channels/some-channel-id/messages', [
+            ->with('POST', 'https://discord.com/api/channels/some-channel-id/messages', [
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
@@ -63,7 +63,7 @@ class DiscordTest extends BaseTest
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
             ->once()
-            ->with('POST', 'https://discordapp.com/api/channels/some-channel-id/messages', [
+            ->with('POST', 'https://discord.com/api/channels/some-channel-id/messages', [
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
@@ -85,7 +85,7 @@ class DiscordTest extends BaseTest
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
             ->once()
-            ->with('POST', 'https://discordapp.com/api/channels/some-channel-id/messages', [
+            ->with('POST', 'https://discord.com/api/channels/some-channel-id/messages', [
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
@@ -107,7 +107,7 @@ class DiscordTest extends BaseTest
         $http = Mockery::mock(HttpClient::class);
         $http->shouldReceive('request')
             ->once()
-            ->with('POST', 'https://discordapp.com/api/channels/some-channel-id/messages', [
+            ->with('POST', 'https://discord.com/api/channels/some-channel-id/messages', [
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
