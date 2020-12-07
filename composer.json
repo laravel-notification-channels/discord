@@ -28,7 +28,7 @@
         "textalk/websocket": "^1.2"
     },
     "require-dev": {
-        "mockery/mockery": "^1.3",
+        "mockery/mockery": "^1.3.3",
         "orchestra/testbench": "^5.0 || ^6.0",
         "phpunit/phpunit": "^8.5 || ^9.0"
     },
