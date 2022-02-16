@@ -31,7 +31,7 @@ class DiscordChannel
      */
     public function send($notifiable, Notification $notification)
     {
-        if (! $channel = $notifiable->routeNotificationFor('discord')) {
+        if (! $channel = $notifiable->routeNotificationFor('discord', $notification)) {
             return;
         }
 
