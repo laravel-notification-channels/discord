@@ -49,7 +49,7 @@ class SetupCommandTest extends Orchestra
     {
         $command = new SetupCommand(new HttpClient, 'my-token');
 
-        $socket = $command->getSocket('my-gateway');
+        $socket = $command->getSocket('wss://gateway.discord.gg');
 
         $this->assertInstanceOf(Client::class, $socket);
     }
@@ -88,7 +88,7 @@ class SetupCommandTest extends Orchestra
     public function it_connects_to_the_discord_gateway()
     {
         $command = Mockery::mock(SetupCommand::class.'[getGateway,getSocket,confirm,ask,warn,info]', [new HttpClient, 'my-token']);
-        $socket = Mockery::mock(Client::class, ['wss://gateway.discord.gg']);
+        $socket = Mockery::mock(Client::class.'[send,receive]', ['wss://gateway.discord.gg']);
 
         $socket->shouldReceive('send')->with(json_encode([
             'op' => 2,
@@ -119,7 +119,7 @@ class SetupCommandTest extends Orchestra
     public function it_notifies_the_user_of_a_failed_identification_attempt()
     {
         $command = Mockery::mock(SetupCommand::class.'[getGateway,getSocket,confirm,ask,warn,error]', [new HttpClient, 'my-token']);
-        $socket = Mockery::mock(Client::class, ['wss://gateway.discord.gg']);
+        $socket = Mockery::mock(Client::class.'[send,receive]', ['wss://gateway.discord.gg']);
 
         $socket->shouldReceive('send')->with(json_encode([
             'op' => 2,
