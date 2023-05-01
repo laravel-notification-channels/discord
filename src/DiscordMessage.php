@@ -19,24 +19,32 @@ class DiscordMessage
     public $embed;
 
     /**
+     * The component objects attached to the message.
+     *
+     * @var array
+     */
+    public $components;
+
+    /**
      * @param string     $body
      * @param array|null $embed
      *
      * @return static
      */
-    public static function create($body = '', $embed = [])
+    public static function create($body = '', $embed = [], $components = [])
     {
-        return new static($body, $embed);
+        return new static($body, $embed, $components);
     }
 
     /**
      * @param string $body
      * @param array  $embed
      */
-    public function __construct($body = '', $embed = [])
+    public function __construct($body = '', $embed = [], $components = [])
     {
         $this->body = $body;
         $this->embed = $embed;
+        $this->components = $components;
     }
 
     /**
@@ -63,6 +71,20 @@ class DiscordMessage
     public function embed($embed)
     {
         $this->embed = $embed;
+
+        return $this;
+    }
+
+    /**
+     * Set the components object.
+     *
+     * @param $components
+     *
+     * @return $this
+     */
+    public function components($components)
+    {
+        $this->components = $components;
 
         return $this;
     }

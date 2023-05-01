@@ -144,6 +144,8 @@ class GameChallengeNotification extends Notification
 
 * `body(string)`: Set the content of the message. ([Supports basic markdown](https://support.discord.com/hc/en-us/articles/210298617-Markdown-Text-101-Chat-Formatting-Bold-Italic-Underline-))
 * `embed(array)`: Set the embedded content. ([View embed structure](https://discord.com/developers/docs/resources/channel#embed-object))
+* `components(array)`: Set the component content. ([View component structure](https://discord.com/developers/docs/interactions/message-components#component-object))
+
 
 ## Changelog
 

@@ -21,10 +21,24 @@ class DiscordChannelTest extends BaseTest
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
-                'json' => ['content' => 'Hello, Discord!', 'embed' => [
-                    'title' => 'Object Title',
-                    'url' => 'https://discord.com',
-                ]],
+                'json' => [
+                    'content' => 'Hello, Discord!', 'embed' => [
+                        'title' => 'Object Title',
+                        'url' => 'https://discord.com',
+                    ], "components" => [
+                        [
+                            "type" => 1,
+                            "components" => [
+                                [
+                                    "type" => 2,
+                                    "label" => "Test",
+                                    "style" => 1,
+                                    "custom_id" => "primary"
+                                ]
+                            ]
+                        ]
+                    ]
+                ],
             ])
             ->andReturn(new Response(200));
 
@@ -70,6 +84,18 @@ class TestNotification extends \Illuminate\Notifications\Notification
             ->embed([
                 'title' => 'Object Title',
                 'url' => 'https://discord.com',
+            ])->components([
+                [
+                    "type" => 1,
+                    "components" => [
+                        [
+                            "type" => 2,
+                            "label" => "Test",
+                            "style" => 1,
+                            "custom_id" => "primary"
+                        ]
+                    ]
+                ]
             ]);
     }
 }
