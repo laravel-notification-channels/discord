@@ -22,18 +22,22 @@ class DiscordChannelTest extends BaseTest
                     'Authorization' => 'Bot super-secret',
                 ],
                 'json' => [
-                    'content' => 'Hello, Discord!', 'embed' => [
-                        'title' => 'Object Title',
-                        'url' => 'https://discord.com',
-                    ], "components" => [
+                    'content' => 'Hello, Discord!',
+                    'embeds' => [
+                        0 => [
+                            'title' => 'Object Title',
+                            'url' => 'https://discord.com',
+                        ]
+                    ],
+                    'components' => [
                         [
-                            "type" => 1,
-                            "components" => [
+                            'type' => 1,
+                            'components' => [
                                 [
-                                    "type" => 2,
-                                    "label" => "Test",
-                                    "style" => 1,
-                                    "custom_id" => "primary"
+                                    'type' => 2,
+                                    'label' => 'Test',
+                                    'style' => 1,
+                                    'custom_id' => 'primary'
                                 ]
                             ]
                         ]
@@ -84,7 +88,8 @@ class TestNotification extends \Illuminate\Notifications\Notification
             ->embed([
                 'title' => 'Object Title',
                 'url' => 'https://discord.com',
-            ])->components([
+            ])
+            ->components([
                 [
                     "type" => 1,
                     "components" => [

@@ -31,16 +31,24 @@ class DiscordChannel
      */
     public function send($notifiable, Notification $notification)
     {
-        if (! $channel = $notifiable->routeNotificationFor('discord', $notification)) {
+        if (!$channel = $notifiable->routeNotificationFor('discord', $notification)) {
             return;
         }
 
         $message = $notification->toDiscord($notifiable);
 
-        return $this->discord->send($channel, [
-            'content' => $message->body,
-            'embed' => $message->embed,
-            'components' => $message->components
-        ]);
+        $data = [
+            'content' => $message->body
+        ];
+
+        if (count($message->embed) > 0) {
+            $data['embeds'] = [$message->embed];
+        }
+
+        if (count($message->components) > 0) {
+            $data['components'] = $message->components;
+        }
+
+        return $this->discord->send($channel, $data);
     }
 }
