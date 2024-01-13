@@ -62,9 +62,12 @@ class DiscordMessage
     }
 
     /**
-     * Set the embedded object.
+     * Set a single embedded object.
+     * 
+     * TODO: Refactor to enable multiple embeds.
+     * See https://discord.com/developers/docs/resources/channel#create-message
      *
-     * @param $embed
+     * @param array $embed
      *
      * @return $this
      */
@@ -78,7 +81,7 @@ class DiscordMessage
     /**
      * Set the components object.
      *
-     * @param $components
+     * @param array $components
      *
      * @return $this
      */
