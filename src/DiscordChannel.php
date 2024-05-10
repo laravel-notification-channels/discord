@@ -38,17 +38,55 @@ class DiscordChannel
         $message = $notification->toDiscord($notifiable);
 
         $data = [
-            'content' => $message->body
+            [
+                'name' => 'content',
+                'contents' => $message->body,
+            ],
         ];
 
         if (count($message->embed) > 0) {
-            $data['embeds'] = [$message->embed];
+            $data[] = [
+                'name' => 'embeds',
+                'contents' => [$message->embed],
+            ];
         }
 
         if (count($message->components) > 0) {
-            $data['components'] = $message->components;
+            $data[] = [
+                'name' => 'components',
+                'contents' => $message->components,
+            ];
         }
 
+        foreach ($message->files ?? [] as $i => $file) {
+            $data[] = [
+                'name' => "files[$i]",
+                'contents' => $file,
+            ];
+        }
+
+        $data = [
+            'multipart' => $data,
+        ];
+
         return $this->discord->send($channel, $data);
+
+//        $data = [
+//            'content' => $message->body
+//        ];
+//
+//        if (count($message->embed) > 0) {
+//            $data['embeds'] = [$message->embed];
+//        }
+//
+//        if (count($message->components) > 0) {
+//            $data['components'] = $message->components;
+//        }
+//
+//        if (count($message->files) > 0) {
+//            $data['files'] = $message->files;
+//        }
+
+//        return $this->discord->send($channel, $data);
     }
 }
