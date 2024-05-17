@@ -89,4 +89,22 @@ class DiscordChannel
 
 //        return $this->discord->send($channel, $data);
     }
+
+    public static function toFormData($key, array $data, array $formData = []): array
+    {
+        foreach ($data as $subKey => $value) {
+            $subKey = "$key\[$subKey\]";
+
+            if (is_array($value)) {
+                $formData = self::toFormData($subKey, $value, $formData);
+            } else {
+                $formData[] = [
+                    'name' => $subKey,
+                    'contents' => $value
+                ];
+            }
+        }
+
+        return $formData;
+    }
 }
