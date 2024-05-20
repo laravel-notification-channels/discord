@@ -38,71 +38,45 @@ class DiscordChannel
         $message = $notification->toDiscord($notifiable);
 
         $data = [
-            [
-                'name' => 'content',
-                'contents' => $message->body,
-            ],
+            'content' => $message->body,
         ];
 
         if (count($message->embed) > 0) {
-            $data[] = [
-                'name' => 'embeds',
-                'contents' => [$message->embed],
-            ];
+            $data['embeds'] = [$message->embed];
         }
 
         if (count($message->components) > 0) {
-            $data[] = [
-                'name' => 'components',
-                'contents' => $message->components,
-            ];
+            $data['components'] = $message->components;
         }
 
-        foreach ($message->files ?? [] as $i => $file) {
-            $data[] = [
-                'name' => "files[$i]",
-                'contents' => $file,
-            ];
+        if (count($message->files) > 0) {
+            $data['files'] = $message->files;
         }
 
-        $data = [
-            'multipart' => $data,
-        ];
+        $formData = [];
 
-        return $this->discord->send($channel, $data);
+        foreach ($data as $key => $value) {
+            $formData = array_merge($formData, self::toFormData($key, $value));
+        }
 
-//        $data = [
-//            'content' => $message->body
-//        ];
-//
-//        if (count($message->embed) > 0) {
-//            $data['embeds'] = [$message->embed];
-//        }
-//
-//        if (count($message->components) > 0) {
-//            $data['components'] = $message->components;
-//        }
-//
-//        if (count($message->files) > 0) {
-//            $data['files'] = $message->files;
-//        }
-
-//        return $this->discord->send($channel, $data);
+        return $this->discord->send($channel, $formData);
     }
 
-    public static function toFormData($key, array $data, array $formData = []): array
+    public static function toFormData($key, mixed $data, array &$formData = []): array
     {
-        foreach ($data as $subKey => $value) {
-            $subKey = "$key\[$subKey\]";
+        if (! is_array($data)) {
+            $formData[] = [
+                'name' => $key,
+                'contents' => $data,
+            ];
 
-            if (is_array($value)) {
-                $formData = self::toFormData($subKey, $value, $formData);
-            } else {
-                $formData[] = [
-                    'name' => $subKey,
-                    'contents' => $value
-                ];
-            }
+            return $formData;
+        }
+
+        foreach ($data as $subKey => $value) {
+            $subKey = $key . '[' . $subKey . ']';
+
+            self::toFormData($subKey, $value, $formData);
         }
 
         return $formData;
