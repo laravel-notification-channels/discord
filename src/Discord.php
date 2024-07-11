@@ -86,7 +86,7 @@ class Discord
                 'headers' => [
                     'Authorization' => 'Bot '.$this->token,
                 ],
-                'json' => $data,
+                'multipart' => $data,
             ]);
         } catch (RequestException $exception) {
             if ($response = $exception->getResponse()) {
