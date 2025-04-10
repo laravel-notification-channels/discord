@@ -36,9 +36,15 @@ class DiscordChannel
         }
 
         $message = $notification->toDiscord($notifiable);
+        $formData = $this->toFormData($message);
 
+        return $this->discord->send($channel, $formData);
+    }
+
+    private function toFormData(DiscordMessage $message): array
+    {
         $data = [
-            'content' => $message->body
+            'content' => $message->body,
         ];
 
         if (count($message->embed) > 0) {
@@ -49,6 +55,20 @@ class DiscordChannel
             $data['components'] = $message->components;
         }
 
-        return $this->discord->send($channel, $data);
+        $formData = [
+            [
+                'name' => 'payload_json',
+                'contents' => json_encode($data),
+            ]
+        ];
+
+        foreach ($message->files as $i => $file) {
+            $formData[] = [
+                'name' => 'files[' . $i . ']',
+                'contents' => $file,
+            ];
+        }
+
+        return $formData;
     }
 }
