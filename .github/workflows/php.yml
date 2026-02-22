@@ -1,19 +1,23 @@
 name: PHP
 
-on: [push, pull_request]
+on:
+  - push
+  - pull_request
 
 jobs:
   run:
     runs-on: ${{ matrix.os }}
+
     strategy:
       max-parallel: 15
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        php: ['7.2', '7.3', '7.4', '8.0', '8.1', '8.2']
+        php: ['7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
         dependency-version: [prefer-stable]
 
     name: PHP ${{ matrix.php }} - OS ${{ matrix.os }} - ${{ matrix.dependency-version }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@master
@@ -38,5 +42,4 @@ jobs:
         run: |
           wget https://scrutinizer-ci.com/ocular.phar
           php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-        # Disable on PHP 8 as Ocular isn't supported
         if: matrix.php < 8
