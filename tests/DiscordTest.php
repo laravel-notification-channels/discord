@@ -45,7 +45,7 @@ class DiscordTest extends BaseTest
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
-                'json' => ['content' => 'a message'],
+                'multipart' => ['content' => 'a message'],
             ])
             ->andThrow(new RequestException('Not found', Mockery::mock(Request::class), new Response(404, [], json_encode(['message' => 'Not found']))));
 
@@ -67,7 +67,7 @@ class DiscordTest extends BaseTest
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
-                'json' => ['content' => 'a message'],
+                'multipart' => ['content' => 'a message'],
             ])
             ->andThrow(new RequestException('Some error', Mockery::mock(Request::class)));
 
@@ -89,7 +89,7 @@ class DiscordTest extends BaseTest
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
-                'json' => ['content' => 'a message'],
+                'multipart' => ['content' => 'a message'],
             ])
             ->andThrow(new Exception('Some unexpected error'));
 
@@ -111,7 +111,7 @@ class DiscordTest extends BaseTest
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
-                'json' => ['content' => 'a message'],
+                'multipart' => ['content' => 'a message'],
             ])
             ->andReturn(new Response(200, [], json_encode(['code' => 10003, 'message' => 'Unknown channel'])));
 

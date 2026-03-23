@@ -21,27 +21,29 @@ class DiscordChannelTest extends BaseTest
                 'headers' => [
                     'Authorization' => 'Bot super-secret',
                 ],
-                'json' => [
-                    'content' => 'Hello, Discord!',
-                    'embeds' => [
-                        0 => [
-                            'title' => 'Object Title',
-                            'url' => 'https://discord.com',
-                        ]
-                    ],
-                    'components' => [
-                        [
-                            'type' => 1,
+                'multipart' => [
+                    [
+                        'name' => 'payload_json',
+                        'contents' => json_encode([
+                            'content' => 'Hello, Discord!',
+                            'embeds' => [
+                                ['title' => 'Object Title', 'url' => 'https://discord.com'],
+                            ],
                             'components' => [
                                 [
-                                    'type' => 2,
-                                    'label' => 'Test',
-                                    'style' => 1,
-                                    'custom_id' => 'primary'
-                                ]
-                            ]
-                        ]
-                    ]
+                                    'type' => 1,
+                                    'components' => [
+                                        [
+                                            'type' => 2,
+                                            'label' => 'Test',
+                                            'style' => 1,
+                                            'custom_id' => 'primary',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ]),
+                    ],
                 ],
             ])
             ->andReturn(new Response(200));

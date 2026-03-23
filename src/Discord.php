@@ -51,7 +51,7 @@ class Discord
      */
     public function send($channel, array $data)
     {
-        return $this->request('POST', 'channels/'.$channel.'/messages', $data);
+        return $this->request('POST', 'channels/'.$channel.'/messages', $data, true);
     }
 
     /**
@@ -77,7 +77,7 @@ class Discord
      *
      * @throws \NotificationChannels\Discord\Exceptions\CouldNotSendNotification
      */
-    protected function request($verb, $endpoint, array $data)
+    protected function request($verb, $endpoint, array $data, bool $multipart = false)
     {
         $url = rtrim($this->baseUrl, '/').'/'.ltrim($endpoint, '/');
 
@@ -86,7 +86,7 @@ class Discord
                 'headers' => [
                     'Authorization' => 'Bot '.$this->token,
                 ],
-                'multipart' => $data,
+                $multipart ? 'multipart' : 'json' => $data,
             ]);
         } catch (RequestException $exception) {
             if ($response = $exception->getResponse()) {
